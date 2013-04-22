@@ -1,55 +1,35 @@
 <!doctype html>
 <head>
 	<title>dForm jQuery plugin</title>
+	<meta charset='utf-8' />
+	<link rel='stylesheet' href='dform.css' />
 	<script type='text/javascript' src='http://code.jquery.com/jquery-latest.min.js'></script>
+	<script type='text/javascript' src='dform.js'></script>
 	<script type='text/javascript'>
-		(function($){
-			$.fn.dInpTxt=function(){return this.each(function(){if(!$(this).parent().is('.d-inp-txt')) $(this).wrap('<span class="d-inp d-inp-txt" />');if($(this).attr('class')!='undefined') $(this).parent('.d-inp-txt').addClass($(this).attr('class'));$(this).focus(function(){$(this).parent('.d-inp-txt').addClass('d-inp-focus')});$(this).blur(function(){$(this).parent('.d-inp-txt').removeClass('d-inp-focus')})})};
-			$.fn.dInpBtn=function(){return this.each(function(){if(!$(this).parent().is('.d-inp-btn')) $(this).wrap('<span class="d-inp d-inp-btn" />');if($(this).attr('class')!='undefined'){$(this).parent('.d-inp-btn').addClass($(this).attr('class'))}})};
-			$.fn.dInpCheckbox=function(){return this.each(function(){if(!$(this).parent().is('.d-inp-cb')) $(this).wrap('<span class="d-inp d-inp-cb" />');$(this).parent().append('<b>&#709;</b>');var dInpC=this,dWrapC=$(dInpC).parent(),dLabelC=$('label[for="'+$(dInpC).attr('id')+'"]');$(dLabelC).css({cursor:'pointer'});if(dInpC.checked){$(dWrapC).addClass('d-inp-cb-checked');dLabelC.addClass('current')};$(dInpC).change(function(){if(this.checked){$(dWrapC).addClass('d-inp-cb-checked');dLabelC.addClass('current')}else{$(dWrapC).removeClass('d-inp-cb-checked');dLabelC.removeClass('current')}})})};
-			$.fn.dInpRadio=function(){return this.each(function(){if(!$(this).parent().is('.d-inp-r')) $(this).wrap('<span class="d-inp d-inp-r" />');$(this).parent().append('<b>&bull;</b>');var dInpR=this,dWrapR=$(dInpR).parent(),dLabelR=$('label[for="'+$(this).attr('id')+'"]'),dRadioName=$(this).attr('name');$(dLabelR).css({cursor:'pointer'});if(dInpR.checked){$(dWrapR).addClass('d-inp-r-checked');dLabelR.addClass('current')};$(dInpR).change(function(){if($('input[name="'+dRadioName+'"]').not(this)){$('input[name="'+dRadioName+'"]').each(function(){$(this).parent().removeClass('d-inp-r-checked');$('label[for="'+$(this).attr('id')+'"]').removeClass('current')})};if(this.checked){$(dWrapR).addClass('d-inp-r-checked');dLabelR.addClass('current')}else{$(dWrapR).removeClass('d-inp-r-checked');dLabelR.removeClass('current')}})})};
-			$.fn.dInpFile=function(){return this.each(function(){var inpWidth=$(this).width(),inpName=$(this).attr('name');$(this).addClass('d-inp-file').wrap('<span class="d-inp d-inp-f" style="width:'+inpWidth+'" />');$(this).parent().append('<button>Обзор...</button><input type="text" name="'+inpName+'" readonly="readonly" />');$(this).change(function(){var $this=$(this),$val = $this.val(),valArray = $val.split('\\'),newVal = valArray[valArray.length-1],$fakeFile = $this.parent().find('input[type="text"]');if(newVal!==''){$fakeFile.val(newVal)}});$(this).focus(function(){$(this).parent('.d-inp-f').addClass('d-inp-focus')});$(this).blur(function(){$(this).parent('.d-inp-f').removeClass('d-inp-focus')})})};
-			$.fn.dSelect=function(){return this.each(function(){if(!$(this).parent().is('.d-sel')) $(this).wrap('<span class="d-inp d-sel" />');var select=this,parent=$(select).parent(),selClass=$(select).attr('class'),selValue=$('option:selected',select).text(),selWidth=$(select).outerWidth();$(parent).addClass(selClass).width(selWidth);$(select).before('<span><b>'+selValue+'</b><i>&#9660;</i></span>').change(function(){$('span b',parent).text();var selValue=$('option:selected',this).text();$('span b',parent).text(selValue)})})};
-		})(jQuery);
 		$(function(){
+
 			$('input[type="text"],input[type="password"],textarea').dInpTxt();
+			
 			$('input[type="submit"],input[type="reset"],button').dInpBtn();
+
 			$('input:checkbox').dInpCheckbox();
+
 			$('input:radio').dInpRadio();
+
 			$('input[type="file"]').dInpFile();
+		
 			$('select').dSelect();
+
 		});
 	</script>
-
 	<style type='text/css'>
-		.d-inp { display: inline-block; *display: inline; *zoom: 1; vertical-align: middle; position: relative; background: #fff; border: 1px solid #666; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; -webkit-box-shadow: inset 0 1px 2px #ccc; -moz-box-shadow: inset 0 1px 2px #ccc; box-shadow: inset 0 1px 2px #ccc; font-size: 1em; line-height: 1.33em; font-family: Arial,Helvetica,sans-serif; color: #333; }
-		.d-inp input, .d-inp button, .d-inp select, .d-inp textarea { margin: 0; padding: 0; background: none; border: 0; resize: none; font-size: 1em; line-height: 1.15em; font-family: Arial,Helvetica,sans-serif; color: #333; }
-		.d-inp-txt input, .d-inp-txt textarea { display: block; padding: .25em .5em; }
-		.d-inp-btn { background: #09c; border: 0; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
-		.d-inp-btn input, .d-inp-btn button, input[type="submit"], input[type="reset"] { padding: .35em 2em; color: #fff; }
-		.d-sel { height: 1.75em; line-height: 1.75em; }
-		.d-sel span { position: absolute; z-index: 1; top: 0; left: 0; right: 0; padding: 0 1.25em 0 .5em; white-space: nowrap; }
-		.d-sel b { display: block; position: relative; overflow: hidden; font-weight: 400; }
-		.d-sel i { position: absolute; top: 0; right: .25em; bottom: 0; line-height: 1.75em; overflow: hidden; }
-		.d-sel select { position: relative; z-index: 2; width: 100px; opacity: 0; filter:alpha(opacity=0); cursor: pointer; }
-		.d-inp-focus { border-color: #09c; -webkit-box-shadow: 0 0 3px #069; -moz-box-shadow: 0 0 3px #069; box-shadow: 0 0 3px #069; }
-		.d-inp-cb, .d-inp-r { margin-right: .5em; }
-		.d-inp-cb input, .d-inp-r input { display: block; position: relative; width: 1.75em; height: 1.75em; z-index: 1; opacity: 0; filter:alpha(opacity=0); cursor: pointer; }
-		.d-inp-cb b, .d-inp-r b { display: none; position: absolute; z-index: 0; top: 0; right: 0; bottom: 0; left: 0; line-height: 1.75em; text-align: center; }
-		.d-inp-cb-checked b { display: block; }
-		.d-inp-r-checked b { display: block; }
-		.d-inp-f { padding: 0 .5em; height: 1.75em; }
-		.d-inp-file { position: absolute; z-index: 9; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; opacity: 0; filter: alpha(opacity=0); }
-		.d-inp-f input, .d-inp-f button { height: 1.75em; }
-		.d-inp-f button { float: right; font-weight: bold; }
-
 		.d-tbl { margin: 50px; width: 500px; border-collapse: collapse; border-spacing: 0; border-top: 1px solid #ccc; font-size: 12px; font-family: Arial,helvetica,sans-serif; }
 		.d-tbl td { padding: 1em; border: 0; border-bottom: 1px solid #ccc; }
 		.d-code { display: block; margin-bottom: 1em; padding: 1em; background: #f0f0f0; }
 		sup { font-size: .5em; color: #999; }
 	</style>
-
 </head>
+
 <body>
 
 	<h1>dForm jQuery plugin<sup>1.0</sup></h1>
