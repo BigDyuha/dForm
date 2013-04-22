@@ -1,0 +1,134 @@
+<!doctype html>
+<head>
+  <title>dForm jQuery plugin</title>
+	<meta charset='utf-8' />
+	<link rel='stylesheet' href='dform.css' />
+	<script type='text/javascript' src='http://code.jquery.com/jquery-latest.min.js'></script>
+	<script type='text/javascript' src='dform.js'></script>
+	<script type='text/javascript'>
+		$(function(){
+
+			$('input[type="text"],input[type="password"],textarea').dInpTxt();
+			
+			$('input[type="submit"],input[type="reset"],button').dInpBtn();
+
+			$('input:checkbox').dInpCheckbox();
+
+			$('input:radio').dInpRadio();
+
+			$('input[type="file"]').dInpFile();
+		
+			$('select').dSelect();
+
+		});
+	</script>
+	<style type='text/css'>
+		.d-tbl { margin: 50px; width: 500px; border-collapse: collapse; border-spacing: 0; border-top: 1px solid #ccc; font-size: 12px; font-family: Arial,helvetica,sans-serif; }
+		.d-tbl td { padding: 1em; border: 0; border-bottom: 1px solid #ccc; }
+		.d-code { display: block; margin-bottom: 1em; padding: 1em; background: #f0f0f0; }
+		sup { font-size: .5em; color: #999; }
+	</style>
+</head>
+<body>
+
+	<h1>dForm jQuery plugin<sup>1.0</sup></h1>
+
+	<p><em>Я специально не делал плагин, который срабатывает по селектору форм для того, чтобы можно было легко, без дополнительных настроек кастомизировать только те элементы, которые требуется!</em></p>
+
+	<p>Licensed under the <a href='http://www.opensource.org/licenses/mit-license.php' target='_blank'>MIT License</a></p>
+
+	<h2>Подключение:</h2>
+	<code class='d-code'>
+		&lt;link rel='stylesheet' href='dform.css' /&gt;<br />
+		&lt;script type='text/javascript' src='http://code.jquery.com/jquery-latest.min.js'&gt;&lt;/script&gt;<br />
+		&lt;script type='text/javascript' src='dform.js'&gt;&lt;/script&gt;<br />
+	</code>
+
+	<h2>Инициализация:</h2>
+	<ul>
+		<li><b>Текстовые поля:</b><code class='d-code'>$('input[type="text"],input[type="password"],textarea').dInpTxt();</code></li>
+		<li><b>Кнопки:</b><code class='d-code'>$('input[type="submit"],input[type="reset"],button').dInpBtn();</code></li>
+		<li><b>Чекбоксы:</b><code class='d-code'>$('input:checkbox').dInpCheckbox();</code></li>
+		<li><b>Радио:</b><code class='d-code'>$('input:radio').dInpRadio();</code></li>
+		<li><b>Файлы:</b><code class='d-code'>$('input[type="file"]').dInpFile();</code></li>
+		<li><b>Выпадающие списки:</b><code class='d-code'>$('select').dSelect();</code></li>
+	</ul>
+
+	<h2>Пример:</h2>
+	<table class='d-tbl'><tbody>
+
+		<tr>
+			<td><label><b>Простое текстовое поле:</b></label></td>
+			<td><input type='text' size='25' /></td>
+		</tr>
+
+		<tr>
+			<td><label><b>Поле типа пароль:</b></label></td>
+			<td><input type='password' size='25' /></td>
+		</tr>
+
+		<tr>
+			<td><label><b>Текстарея:</b></label></td>
+			<td><textarea cols='24' rows='3'></textarea></td>
+		</tr>
+
+		<tr>
+			<td><label><b>Кнопка типа submit:</b></label></td>
+			<td><input type='submit' value='Submit' /></td>
+		</tr>
+
+		<tr>
+			<td><label><b>Кнопка типа reset:</b></label></td>
+			<td><input type='reset' value='Reset' /></td>
+		</tr>
+
+		<tr>
+			<td><label><b>Кнопка button:</b></label></td>
+			<td><button>Button</button></td>
+		</tr>
+
+		<tr>
+			<td><label><b>Выпадающий список:</b></label></td>
+			<td>
+				<select>
+					<option>Опция #1</option>
+					<option selected='selected'>Опция #2</option>
+					<option>Опция #3</option>
+				</select>
+			</td>
+		</tr>
+
+		<tr>
+			<td><input type='checkbox' id='checkbox-0' checked='checked' /><label for='checkbox-0'><b>Чекбокс #1</b></label></td>
+			<td><input type='checkbox' id='checkbox-1' /><label for='checkbox-1'><b>Чекбокс #2</b></label></td>
+		</tr>
+
+		<tr>
+			<td><input type='radio' name='radio' id='radio-0' checked='checked' /><label for='radio-0'><b>Радио #1</b></label></td>
+			<td><input type='radio' name='radio' id='radio-1' /><label for='radio-1'><b>Радио #2</b></label></td>
+		</tr>
+
+		<tr>
+			<td><label><b>Поле типа файл:</b></label></td>
+			<td><input type='file' /></td>
+		</tr>
+	
+	</tbody></table>
+
+	<h2>Сведения:</h2>
+	<ol>
+		<li>Данный плагин работает в браузерах IE7+, Opera, Mozilla Firefox, Chrome, Safari (PC, MAC, iOS);</li>
+		<li>Если требуется более полная кастомизация выпадающего списка, то следует использовать jquery плагин "Chosen" (<a href='http://harvesthq.github.io/chosen/' target='_blank'>http://harvesthq.github.io/chosen/</a>);</li>
+		<li>Для того, чтобы в IE9 и более старых версиях отображались скругления и тени, прописанные в css, следует дополнительно подключить PIE (<a href='http://css3pie.com/documentation/' target='_blank'>подробнее...</a>);</li>
+		<li>В данном примере не используются никакие графические элементы. Жеаемый вид можно задать через css, не прибегая к редактированию js файла.</li>
+	</ol>
+
+	<h2>Скачать:</h2>
+	<ul>
+		<li><a href='https://raw.github.com/BigDyuha/dForm/master/dform.css' target='_blank'>css</a></li>
+		<li><a href='https://raw.github.com/BigDyuha/dForm/master/dform.js' target='_blank'>js</a></li>
+		<li><a href='https://raw.github.com/BigDyuha/dForm/master/dform.min.js' target='_blank'>js.min</a></li>
+		<li><a href='https://github.com/BigDyuha/dForm/archive/master.zip' target='_blank'>zip</a></li>
+	</ul>
+
+</body></html>
