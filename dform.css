@@ -2,7 +2,7 @@
 .d-inp input, .d-inp button, .d-inp select, .d-inp textarea { margin: 0; padding: 0; background: none; border: 0; resize: none; font-size: 1em; line-height: 1.15em; font-family: Arial,Helvetica,sans-serif; color: #333; }
 .d-inp-txt input, .d-inp-txt textarea { display: block; padding: .25em .5em; }
 .d-inp-btn { background: #09c; border: 0; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
-.d-inp-btn input, .d-inp-btn button, input[type="submit"], input[type="reset"] { padding: .35em 2em; color: #fff; }
+.d-inp-btn input, .d-inp-btn button, input[type="submit"], input[type="reset"] { padding: .35em 2em; color: #fff; cursor: pointer; }
 .d-sel { height: 1.75em; line-height: 1.75em; }
 .d-sel span { position: absolute; z-index: 1; top: 0; left: 0; right: 0; padding: 0 1.25em 0 .5em; white-space: nowrap; }
 .d-sel b { display: block; position: relative; overflow: hidden; font-weight: 400; }
