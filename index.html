@@ -25,7 +25,7 @@
 	<style type='text/css'>
 		.d-tbl { margin: 50px; width: 500px; border-collapse: collapse; border-spacing: 0; border-top: 1px solid #ccc; font-size: 12px; font-family: Arial,helvetica,sans-serif; }
 		.d-tbl td { padding: 1em; border: 0; border-bottom: 1px solid #ccc; }
-		.d-code { display: block; margin-bottom: 1em; padding: 1em; background: #f0f0f0; }
+		.d-code { display: block; margin-bottom: 1em; padding: 1em; background: #f0f0f0; overflow: auto; white-space: nowrap; }
 		.d-demo { margin: 0 auto; padding: 1em 0; width: 640px; }
 		sup { font-size: .5em; color: #999; }
 	</style>
@@ -41,24 +41,24 @@
 	<p>Licensed under the <a href='http://www.opensource.org/licenses/mit-license.php' target='_blank'>MIT License</a></p>
 
 	<h2>Подключение:</h2>
-	<code class='d-code'>
+	<pre class='d-code'>
 		&lt;link rel='stylesheet' href='dform.css' /&gt;<br />
 		&lt;script type='text/javascript' src='http://code.jquery.com/jquery-latest.min.js'&gt;&lt;/script&gt;<br />
 		&lt;script type='text/javascript' src='dform.js'&gt;&lt;/script&gt;<br />
-	</code>
+	</pre>
 
 	<h2>Инициализация:</h2>
-	<ul>
-		<li><b>Текстовые поля:</b><code class='d-code'>$('input[type="text"],input[type="password"],textarea').dInpTxt();</code></li>
-		<li><b>Кнопки:</b><code class='d-code'>$('input[type="submit"],input[type="reset"],button').dInpBtn();</code></li>
-		<li><b>Чекбоксы:</b><code class='d-code'>$('input:checkbox').dInpCheckbox();</code></li>
-		<li><b>Радио:</b><code class='d-code'>$('input:radio').dInpRadio();</code></li>
-		<li><b>Файлы:</b><code class='d-code'>$('input[type="file"]').dInpFile();</code></li>
-		<li><b>Выпадающие списки:</b><code class='d-code'>$('select').dSelect();</code></li>
-	</ul>
+	<pre class='d-code'>
+		<span style='color:green'>//Текстовые поля:</span><br />$('input[type="text"],input[type="password"],textarea').dInpTxt();<br /><br />
+		<span style='color:green'>//Кнопки:</span><br />$('input[type="submit"],input[type="reset"],button').dInpBtn();<br /><br />
+		<span style='color:green'>//Чекбоксы:</span><br />$('input:checkbox').dInpCheckbox();<br /><br />
+		<span style='color:green'>//Радио:</span><br />$('input:radio').dInpRadio();<br /><br />
+		<span style='color:green'>//Файлы:</span><br />$('input[type="file"]').dInpFile();<br /><br />
+		<span style='color:green'>//Выпадающие списки:</span><br />$('select').dSelect();
+	</pre>
 
 	<h2>Пример:</h2>
-	<table class='d-tbl'><tbody>
+	<form action='#'><table class='d-tbl'><tbody>
 
 		<tr>
 			<td><label><b>Простое текстовое поле:</b></label></td>
@@ -116,7 +116,7 @@
 			<td><input type='file' /></td>
 		</tr>
 	
-	</tbody></table>
+	</tbody></table></form>
 
 	<h2>Сведения:</h2>
 	<ol>
